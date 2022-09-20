@@ -1,15 +1,21 @@
 const { defineConfig } = require("cypress");
+const cypress = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://aws-dev-learn.alw.sa',
+    specPattern: 'cypress/e2e/**/*.e2e.{js,jsx,ts,tsx}',
+    defaultCommandTimeout: 60000, // default 1 second
+    failOnStatusCode: false,
+    experimentalSessionAndOrigin: true,
+    responseTimeout: 120000,
+    // baseUrl: '',
     // supportFolder: 'cypress/e2e',
-    specPattern: 'js,jsx,ts,tsx',
-    defaultCommandTimeout: 1000, // default 1 second
+    // env: {},
     // port: '',
     pageLoadTimeout: 60000, // default 1 minute
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      config.baseUrl = config.env['CYPRESS_BASE_URL'];
+      return config;
     },
   },
 });
