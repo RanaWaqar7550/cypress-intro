@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run:dashboard": "cypress run --record --key 77779dc2-badb-4f4c-908b-90255c2641fa"
   },
   "author": "",
   "license": "ISC",
